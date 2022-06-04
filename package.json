@@ -1,0 +1,29 @@
+{
+  "name": "webpack_build",
+  "version": "1.0.0",
+  "description": "webpack rebuild",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/white-than-wood/webpack_build.git"
+  },
+  "keywords": [
+    "webpack",
+    "learn",
+    "build"
+  ],
+  "author": "WTW",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/white-than-wood/webpack_build/issues"
+  },
+  "homepage": "https://github.com/white-than-wood/webpack_build#readme",
+  "devDependencies": {
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
