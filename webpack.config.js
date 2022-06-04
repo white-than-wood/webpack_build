@@ -1,6 +1,8 @@
 const path = require('path');
 
-const SRC_DIR = path.resolve(__dirname, './index');
+// 入口文件
+const SRC_DIR = path.join(__dirname, 'src', 'index.js');
+// 导出chunks模块所在的目录
 const DIST_DIR = path.resolve(__dirname, './dist');
 
 module.exports = {
