@@ -14,7 +14,7 @@ const SRC_DIR = path.join(__dirname, 'src', 'index.js');
 const DIST_DIR = path.resolve(__dirname, './dist');
 // 配置DevServer服务的根目录
 const BASE_DIR = path.join(__dirname, 'dist');
-// 资源前缀
+// 资源目录前缀
 const PUBLIC_DIR = './';
 // 环境变量
 const NODE_ENV = process.env.NODE_ENV;
@@ -23,11 +23,16 @@ const PORT = 9999;
 
 module.exports = {
 	entry: {
+		// 指的是 webpack 运行时所指向的工作目录
+		// context
 		index: SRC_DIR
 	},
 	output: {
 		path: DIST_DIR,
 		filename: 'js/[name].[fullhash].js',
+		// 指的是每个入口chunk模块导出时文件的名称
+		chunkFilename: 'js/[name].[fullhash].js',
+		// 模块导出配置,使用'umd'模块类型导出,模块导出的名称为'webpackBuild',commonjs2不需要模块导出名称(module.exports)
 		library: {
 			name: 'webpackBuild',
 			type: 'umd',
@@ -35,6 +40,14 @@ module.exports = {
 		}
 	},
 	mode: NODE_ENV,
+	resolve: {
+		//查询解析模块时,有过长的目录路径时,可省略不必要的前缀,用句柄简称来代替
+		alias: {
+			'@': path.resolve(__dirname, 'src', 'module'),
+		},
+		//查询解析模块时,省略后缀
+		extensions: ['.ts', '.js', '.css', '.less']
+	},
 	module: {
 		// rules: [{
 		// 	test: /.css$/,

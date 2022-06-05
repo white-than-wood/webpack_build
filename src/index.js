@@ -1,7 +1,7 @@
 // 赋值复制
-const {count, addCount} = require("./module/index.js");
+const {count, addCount} = require("@/index");
 
-require('./index.css');
+require('./style');
 
 console.log(count);
 addCount();
