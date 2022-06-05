@@ -79,6 +79,10 @@ module.exports = {
 		})
 	],
 	devtool: 'cheap-source-map',
+	watchOptions: {
+		poll: true,
+		aggregateTimeout: 1000
+	},
 	devServer: {
 		host: 'localhost',
 		port: PORT,
@@ -88,6 +92,14 @@ module.exports = {
 			app: {
 				name: open.apps.chrome
 			}
+		},
+		//开启Gzip压缩
+		compress: true,
+		client: {
+			// webpack-dev-server 配置的websocket client端日志等级
+			logging: 'verbose'
+		},
+		proxy: {
 		}
 	},
 };
