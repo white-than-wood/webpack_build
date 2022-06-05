@@ -9,7 +9,7 @@ const DIST_DIR = path.resolve(__dirname, './dist');
 // 环境变量
 const NODE_ENV = process.env.NODE_ENV;
 
-	module.exports = {
+module.exports = {
 	entry: SRC_DIR,
 	output: {
 		path: DIST_DIR,
@@ -37,5 +37,10 @@ const NODE_ENV = process.env.NODE_ENV;
 		new MiniCssExtractPlugin({
 			filename: 'index.css'
 		})
-	]
+	],
+	devtool: 'cheap-source-map',
+	devServer: {
+		//是否启用热更新
+		hot: true
+	},
 };
