@@ -7,4 +7,5 @@ console.log(count);
 addCount();
 console.log(count);
 
-document.write('webpack build!!!');
+const root = document.getElementById('root');
+root.innerText = 'webpack build!!!!';
