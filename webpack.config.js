@@ -104,6 +104,8 @@ module.exports = {
 		},
 		//开启Gzip压缩
 		compress: true,
+		//开启缓存,提高构建打包速度
+		cache: true,
 		client: {
 			// webpack-dev-server 配置的websocket client端日志等级
 			logging: 'verbose'
