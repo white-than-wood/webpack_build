@@ -58,6 +58,11 @@ module.exports = {
 		// 	}]
 		// }]
 		rules: [{
+			test: /.jsx?$/,
+			use: [{
+				loader: 'babel-loader'
+			}]
+		}, {
 			test: /.css$/,
 			use: [MiniCssExtractPlugin.loader, {
 				loader: 'css-loader'

@@ -3,7 +3,7 @@ function addCount() {
 	count++;
 }
 
-module.exports = {
+export {
 	count,
 	addCount
 };
