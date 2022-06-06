@@ -83,6 +83,10 @@ module.exports = {
 		poll: true,
 		aggregateTimeout: 1000
 	},
+	stats: {
+		preset: 'errors-warnings',
+		colors: true
+	},
 	devServer: {
 		host: 'localhost',
 		port: PORT,
