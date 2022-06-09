@@ -1,7 +1,7 @@
 // 赋值复制
-import {count, addCount} from '@/index';
+import {count, addCount} from '@';
 
-import './style.css';
+import './style';
 
 console.log(count);
 addCount();
@@ -39,7 +39,10 @@ bash().then((data) => {
 });
 
 class Person {
-	constructor(name, age) {
+	public name: string;
+	public age: number;
+
+	constructor(name: string, age: number) {
 		this.name = name;
 		this.age = age;
 	}
@@ -48,10 +51,10 @@ class Person {
 }
 
 const person = new Person('Gary', 28);
-console.log(person.name, person.age);
+console.log(person?.name, person?.age);
 
 console.log(String.raw`I'm Gary\n28 year's old~`);
 console.log(Person.hobby);
 
-const root = document.getElementById('root');
-root.innerText = 'webpack build!!!!';
+const root: HTMLElement | null = document.getElementById('root');
+root && (root.innerText = 'webpack build!!!!');

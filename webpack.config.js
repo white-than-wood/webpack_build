@@ -9,7 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const open = require('open');
 
 // 入口文件
-const SRC_DIR = path.join(__dirname, 'src', 'index.js');
+const SRC_DIR = path.join(__dirname, 'src', 'index.ts');
 // 导出chunks模块所在的目录
 const DIST_DIR = path.resolve(__dirname, './dist');
 // 配置DevServer服务的根目录
@@ -46,7 +46,7 @@ module.exports = {
 			'@': path.resolve(__dirname, 'src', 'module'),
 		},
 		//查询解析模块时,省略后缀
-		extensions: ['.ts', '.js', '.css', '.less']
+		extensions: ['.ts', '.js', '.css', '.less', '.sass']
 	},
 	module: {
 		// rules: [{
@@ -58,14 +58,31 @@ module.exports = {
 		// 	}]
 		// }]
 		rules: [{
-			test: /.jsx?$/,
+			test: /.tsx?$/,
+			use: [{
+				loader: 'ts-loader'
+			}]
+		}, {
+			test: /\.jsx?$/,
 			use: [{
 				loader: 'babel-loader'
 			}]
 		}, {
-			test: /.css$/,
+			test: /\.css$/,
 			use: [MiniCssExtractPlugin.loader, {
 				loader: 'css-loader'
+			}]
+		}, {
+			test: /\.less$/,
+			use: [MiniCssExtractPlugin.loader, {
+				loader: 'css-loader',
+				options: {
+					importLoaders: 2
+				}
+			}, {
+				loader: 'postcss-loader'
+			}, {
+				loader: 'less-loader'
 			}]
 		}]
 	},
@@ -104,13 +121,10 @@ module.exports = {
 		},
 		//开启Gzip压缩
 		compress: true,
-		//开启缓存,提高构建打包速度
-		cache: true,
 		client: {
 			// webpack-dev-server 配置的websocket client端日志等级
 			logging: 'verbose'
 		},
-		proxy: {
-		}
+		proxy: {}
 	},
 };
