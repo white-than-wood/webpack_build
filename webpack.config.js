@@ -9,7 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const open = require('open');
 
 // 入口文件
-const SRC_DIR = path.join(__dirname, 'src', 'index.ts');
+const SRC_DIR = path.join(__dirname, 'src', 'index.tsx');
 // 导出chunks模块所在的目录
 const DIST_DIR = path.resolve(__dirname, './dist');
 // 配置DevServer服务的根目录
@@ -60,13 +60,17 @@ module.exports = {
 		rules: [{
 			test: /.tsx?$/,
 			use: [{
+				loader: 'babel-loader',
+			}, {
 				loader: 'ts-loader'
-			}]
+			}],
+			exclude: /node_modules/
 		}, {
 			test: /\.jsx?$/,
 			use: [{
 				loader: 'babel-loader'
-			}]
+			}],
+			exclude: /node_modules/
 		}, {
 			test: /\.css$/,
 			use: [MiniCssExtractPlugin.loader, {

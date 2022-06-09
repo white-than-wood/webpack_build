@@ -6,5 +6,9 @@ module.exports = {
 			//是否启用core-js,加入polyfill兼容老旧版浏览器原生不支持的新功能
 			useBuiltIns: false
 		}
+	], [
+		"@babel/preset-react", {
+      runtime: "automatic"
+		}
 	]]
 };
