@@ -5,6 +5,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // webpack html文件处理插件
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// 压缩css插件
+const CSSMinimizerPlugin = require('css-minimizer-webpack-plugin');
 // 命令行打开浏览器配置依赖
 const open = require('open');
 
@@ -38,6 +40,11 @@ module.exports = {
 			type: 'umd',
 			export: 'default'
 		}
+	},
+	optimization: {
+		minimizer: [
+			new CSSMinimizerPlugin()
+		]
 	},
 	mode: NODE_ENV,
 	resolve: {
