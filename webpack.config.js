@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 // 清理webpack导出模块插件
 const CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin;
@@ -31,9 +32,9 @@ module.exports = {
 	},
 	output: {
 		path: DIST_DIR,
-		filename: 'js/[name].[fullhash].js',
+		filename: 'js/[name].[chunkhash].js',
 		// 指的是每个入口chunk模块导出时文件的名称
-		chunkFilename: 'js/[name].[fullhash].js',
+		chunkFilename: 'js/[name].[chunkhash].js',
 		// 模块导出配置,使用'umd'模块类型导出,模块导出的名称为'webpackBuild',commonjs2不需要模块导出名称(module.exports)
 		library: {
 			name: 'webpackBuild',
@@ -81,7 +82,12 @@ module.exports = {
 		}, {
 			test: /\.css$/,
 			use: [MiniCssExtractPlugin.loader, {
-				loader: 'css-loader'
+				loader: 'css-loader',
+				options: {
+					importLoaders: 1
+				}
+			}, {
+				loader: 'postcss-loader'
 			}]
 		}, {
 			test: /\.less$/,
@@ -94,6 +100,15 @@ module.exports = {
 				loader: 'postcss-loader'
 			}, {
 				loader: 'less-loader'
+			}]
+		}, {
+			test: /\.(png|jpg|bmp|gif|jpeg)$/,
+			use: [{
+				loader: 'url-loader',
+				options: {
+					limit: 1024 * 100,
+					name: 'assets/[name].[hash:6].[ext]'
+				}
 			}]
 		}]
 	},

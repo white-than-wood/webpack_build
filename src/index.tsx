@@ -2,6 +2,7 @@
 import {count, addCount} from '@';
 import {Component} from 'react';
 import {render} from 'react-dom';
+import virus from './assets/virus.jpeg';
 
 import './style';
 
@@ -65,6 +66,7 @@ class Goods extends Component {
     render() {
         return <div>
             Goods!!!!
+            <img src={virus} alt='百毒不侵' />
         </div>;
     }
 }
