@@ -128,8 +128,9 @@ module.exports = {
 	],
 	devtool: 'cheap-source-map',
 	watchOptions: {
-		poll: true,
-		aggregateTimeout: 1000
+		ignored: /node_modules/,
+		poll: 1000,
+		aggregateTimeout: 500
 	},
 	stats: {
 		preset: 'errors-warnings',
