@@ -87,6 +87,12 @@ module.exports = {
 					importLoaders: 1
 				}
 			}, {
+				loader: 'px2rem-loader',
+				options: {
+					remUnit: 750,
+					remPrecision: 8
+				}
+			}, {
 				loader: 'postcss-loader'
 			}]
 		}, {
@@ -94,7 +100,13 @@ module.exports = {
 			use: [MiniCssExtractPlugin.loader, {
 				loader: 'css-loader',
 				options: {
-					importLoaders: 2
+					importLoaders: 3
+				}
+			}, {
+				loader: 'px2rem-loader',
+				options: {
+					remUnit: 750,
+					remPrecision: 8
 				}
 			}, {
 				loader: 'postcss-loader'
@@ -120,7 +132,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			publicPath: PUBLIC_DIR,
 			filename: 'index.html',
-			template: path.join(__dirname, 'src', 'index.html'),
+			template: path.join(__dirname, 'src', 'index.ejs'),
 			chunks: ['index'],
 			minify: true,
 			inject: 'body'
