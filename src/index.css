@@ -1,0 +1,11 @@
+body {
+    color: #12345678;
+    font-size: 32px;
+    font-weight: bolder;
+    text-align: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
