@@ -22,7 +22,7 @@ const PUBLIC_DIR = './';
 // 环境变量
 const NODE_ENV = process.env.NODE_ENV;
 // webpack-dev-server端口号
-const PORT = 9999;
+const PORT = 9777;
 
 module.exports = {
 	entry: {
