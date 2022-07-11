@@ -4,6 +4,7 @@
   "description": "用于学习webpack的练习项目",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --config=./webpack.config.js --color",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
